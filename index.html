@@ -11,16 +11,32 @@
     <div class="starting-page">
         <button id="startbtn">Start Quiz</button>
     </div>
-    <div class="question-page hidden">
+    <div class="question-1-page hidden">
         <h3>Question 1</h3>
         <break>
-        <p>How do you create a new class using JavaScript?</p>
+        <p>What is the output of the following JavaScript Code?</p>
+        <break>
+        <p>console.log(1 + "1");</p>
         <!--Multiple Choice Answers-->
-        <button id="1-choice-A">A</button> Answer A
-        <button id="1-choice-B">B</button> Answer B
-        <button id="1-choice-C">C</button> Answer C
-        <button id="1-choice-D">D</button> Answer D
+        <button id="1-choice-A" class="answer-1-button">A</button> 11
+        <button id="1-choice-B" class="answer-1-button">B</button> 2
+        <button id="1-choice-C" class="answer-1-button">C</button> NaN
+        <button id="1-choice-D" class="answer-1-button">D</button> An Error
+        <break>
+        <p class="Answer-One-Correct hidden">Correct! 😁</p>
+        <p class="Answer-One-Incorrect hidden"> Incorrect! 😫</p>
     </div>
+    
+    <div class="question-2-page hidden">
+        <h3>Question 2</h3>
+        <break>
+        <p>What does NaN stand for in JavaScript?</p>
+        <button id="2-choice-A">A</button> Not a Name
+        <button id="2-choice-B">B</button> Not a Number
+        <button id="2-choice-C">C</button> New Array Number
+        <button id="2-choice-D">D</button> None of the Above
+    </div>
+
     <div class="high-score-page"></div>
 </body>
 
