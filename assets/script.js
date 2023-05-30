@@ -3,6 +3,7 @@ var startBtnEl = document.querySelector("#startbtn");
 var timer = document.querySelector(".timer");
 var timeLeft = 60;
 var score = 0;
+var timerCountDown;
 
 startBtnEl.addEventListener("click", function (event) {
     console.log("Button Clicked");
@@ -15,7 +16,7 @@ startBtnEl.addEventListener("click", function (event) {
 function countdown() {
 
     // set timer interval
-    var timerCountDown = setInterval(function () {
+    timerCountDown = setInterval(function () {
     timeLeft--;
     timer.textContent = timeLeft;
     if (timeLeft <= 10) {
@@ -173,6 +174,227 @@ questionFourAnswers.forEach(function(button) {
         }, 1300);
     });
 });
+
+
+
+var questionFivePage = document.querySelector(".question-5-page");
+var questionFiveAnswers = document.querySelectorAll(".answer-5-button");
+var questionSixPage = document.querySelector(".question-6-page");
+
+var correctAnswerFour = document.getElementById("choice-3-A");
+var questionFiveCorrect = document.querySelector(".Question-Five-Correct");
+var questionFiveIncorrect = document.querySelector(".Question-Five-Incorrect");
+var questionFiveNext = document.querySelector(".question-5-page");
+
+questionFiveAnswers.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        
+        if (event.target.id === "choice-5-B") {
+            console.log("Question Five Correct!");
+            questionFiveCorrect.classList.remove("hidden");
+            score = (score + 10);
+            console.log("Score = " + score);
+      
+        } else {
+            console.log("Question Five Incorrect!")
+            questionFiveIncorrect.classList.remove("hidden");
+            // make it so that answering incorrecly subtracts 10 seconds from time
+            timeLeft = Math.max(timeLeft - 10, 0);
+        }
+
+        document.querySelectorAll('.answer-5-button').forEach(function(button) {
+            console.log("Disabling button", button.id);
+            button.disabled = true;
+        });
+        setTimeout(() => {
+        questionFiveNext.classList.add("hidden");
+        questionSixPage.classList.remove("hidden");
+        }, 1300);
+    });
+});
+
+var questionSixPage = document.querySelector(".question-6-page");
+var questionSixAnswers = document.querySelectorAll(".answer-6-button");
+var questionSevenPage = document.querySelector(".question-7-page");
+
+var correctAnswerFour = document.getElementById("choice-3-A");
+var questionSixCorrect = document.querySelector(".Question-Six-Correct");
+var questionSixIncorrect = document.querySelector(".Question-Six-Incorrect");
+var questionSixNext = document.querySelector(".question-6-page");
+
+questionSixAnswers.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        
+        if (event.target.id === "choice-6-B") {
+            console.log("Question Six Correct!");
+            questionSixCorrect.classList.remove("hidden");
+            score = (score + 10);
+            console.log("Score = " + score);
+      
+        } else {
+            console.log("Question Six Incorrect!")
+            questionSixIncorrect.classList.remove("hidden");
+            // make it so that answering incorrecly subtracts 10 seconds from time
+            timeLeft = Math.max(timeLeft - 10, 0);
+        }
+
+        document.querySelectorAll('.answer-6-button').forEach(function(button) {
+            console.log("Disabling button", button.id);
+            button.disabled = true;
+        });
+        setTimeout(() => {
+        questionSixNext.classList.add("hidden");
+        questionSevenPage.classList.remove("hidden");
+        }, 1300);
+    });
+});
+
+var questionSevenPage = document.querySelector(".question-7-page");
+var questionSevenAnswers = document.querySelectorAll(".answer-7-button");
+var questionEightPage = document.querySelector(".question-8-page");
+
+var correctAnswerFour = document.getElementById("choice-3-A");
+var questionSevenCorrect = document.querySelector(".Question-Seven-Correct");
+var questionSevenIncorrect = document.querySelector(".Question-Seven-Incorrect");
+var questionSevenNext = document.querySelector(".question-7-page");
+
+questionSevenAnswers.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        
+        if (event.target.id === "choice-7-C") {
+            console.log("Question Seven Correct!");
+            questionSevenCorrect.classList.remove("hidden");
+            score = (score + 10);
+            console.log("Score = " + score);
+      
+        } else {
+            console.log("Question Seven Incorrect!")
+            questionSevenIncorrect.classList.remove("hidden");
+            // make it so that answering incorrecly subtracts 10 seconds from time
+            timeLeft = Math.max(timeLeft - 10, 0);
+        }
+
+        document.querySelectorAll('.answer-7-button').forEach(function(button) {
+            console.log("Disabling button", button.id);
+            button.disabled = true;
+        });
+        setTimeout(() => {
+        questionSevenNext.classList.add("hidden");
+        questionEightPage.classList.remove("hidden");
+        }, 1300);
+    });
+});
+
+var questionEightPage = document.querySelector(".question-8-page");
+var questionEightAnswers = document.querySelectorAll(".answer-8-button");
+var questionNinePage = document.querySelector(".question-9-page");
+
+var correctAnswerFour = document.getElementById("choice-3-A");
+var questionEightCorrect = document.querySelector(".Question-Eight-Correct");
+var questionEightIncorrect = document.querySelector(".Question-Eight-Incorrect");
+var questionEightNext = document.querySelector(".question-8-page");
+
+questionEightAnswers.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        
+        if (event.target.id === "choice-8-B") {
+            console.log("Question Eight Correct!");
+            questionEightCorrect.classList.remove("hidden");
+            score = (score + 10);
+            console.log("Score = " + score);
+      
+        } else {
+            console.log("Question Eight Incorrect!")
+            questionEightIncorrect.classList.remove("hidden");
+            // make it so that answering incorrecly subtracts 10 seconds from time
+            timeLeft = Math.max(timeLeft - 10, 0);
+        }
+
+        document.querySelectorAll('.answer-8-button').forEach(function(button) {
+            console.log("Disabling button", button.id);
+            button.disabled = true;
+        });
+        setTimeout(() => {
+        questionEightNext.classList.add("hidden");
+        questionNinePage.classList.remove("hidden");
+        }, 1300);
+    });
+});
+
+var questionNinePage = document.querySelector(".question-9-page");
+var questionNineAnswers = document.querySelectorAll(".answer-9-button");
+var questionTenPage = document.querySelector(".question-10-page");
+
+var correctAnswerFour = document.getElementById("choice-3-A");
+var questionNineCorrect = document.querySelector(".Question-Nine-Correct");
+var questionNineIncorrect = document.querySelector(".Question-Nine-Incorrect");
+var questionNineNext = document.querySelector(".question-9-page");
+
+questionNineAnswers.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        
+        if (event.target.id === "choice-9-A") {
+            console.log("Question Nine Correct!");
+            questionNineCorrect.classList.remove("hidden");
+            score = (score + 10);
+            console.log("Score = " + score);
+      
+        } else {
+            console.log("Question Nine Incorrect!")
+            questionNineIncorrect.classList.remove("hidden");
+            // make it so that answering incorrecly subtracts 10 seconds from time
+            timeLeft = Math.max(timeLeft - 10, 0);
+        }
+
+        document.querySelectorAll('.answer-9-button').forEach(function(button) {
+            console.log("Disabling button", button.id);
+            button.disabled = true;
+        });
+        setTimeout(() => {
+        questionNineNext.classList.add("hidden");
+        questionTenPage.classList.remove("hidden");
+        }, 1300);
+    });
+});
+
+var questionTenPage = document.querySelector(".question-10-page");
+var questionTenAnswers = document.querySelectorAll(".answer-10-button");
+var highScorePage = document.querySelector(".high-score-page");
+
+var correctAnswerFour = document.getElementById("choice-3-A");
+var questionTenCorrect = document.querySelector(".Question-Ten-Correct");
+var questionTenIncorrect = document.querySelector(".Question-Ten-Incorrect");
+var questionTenNext = document.querySelector(".question-10-page");
+
+questionTenAnswers.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        
+        if (event.target.id === "choice-10-B") {
+            console.log("Question Ten Correct!");
+            questionTenCorrect.classList.remove("hidden");
+            score = (score + 10);
+            console.log("Score = " + score);
+      
+        } else {
+            console.log("Question Ten Incorrect!")
+            questionTenIncorrect.classList.remove("hidden");
+            // make it so that answering incorrecly subtracts 10 seconds from time
+            timeLeft = Math.max(timeLeft - 10, 0);
+        }
+
+        document.querySelectorAll('.answer-10-button').forEach(function(button) {
+            console.log("Disabling button", button.id);
+            button.disabled = true;
+        });
+        clearInterval(timerCountDown);
+        setTimeout(() => {
+        questionTenNext.classList.add("hidden");
+        highScorePage.classList.remove("hidden");
+        }, 1300);
+    });
+});
+
+
 
 
 
