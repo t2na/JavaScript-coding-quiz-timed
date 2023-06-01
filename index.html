@@ -141,17 +141,36 @@
                     <p class="Question-Ten-Correct hidden text-success">Correct! 😁</p>
                     <p class="Question-Ten-Incorrect hidden text-danger">Incorrect! 😫</p>
                 </div>
-
-                <div class="high-score-page hidden bg-light my-4 p-4 rounded">
-                   <h3>Quiz Over! Enter your name to save your score!</h3>
+            <div class="high-score-container">
+                <div class="high-score-page hidden bg-light my-4 p-4 rounded text-center">
+                   <h3>Quiz over! Enter your name to save your score!</h3>
+                   <h4>Score: <span id="high-score"></span></h4>
                 </div>
-            
+                <break>
+                <!--Need text field where you can enter a name, next to score field that saves your high score-->
+                <div id="high-score-box" class="hidden bg-light my-4 p-4 rounded">
+                    <div id="enter-your-name" class="row">
+                        <div class="col-4">
+                            <button id="saveButton" class="btn btn-success">Save Score</button>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" id="nameField" placeholder="Your name here" />
+                        </div>
+                    </div>
+                </div>
+                <break>
+                <div class="high-score-list-contiainer hidden bg-light my-4 p-4 rounded text-center">
+                    <h4>High Scores</h4>
+                    <div class="high-score-list hidden row">
+                        <p id="name-goes-here"></p>
+                        <p id="score-goes-here"></p>
+                    </div>
+                </div>
+                
+            </div>
             </div>
         </div>
     </div>
-
-
-    <div class="high-score-page"></div>
 </body>
 
 <script src="./assets/script.js"></script>

@@ -4,6 +4,11 @@ var timer = document.querySelector(".timer");
 var timeLeft = 60;
 var score = 0;
 var timerCountDown;
+var allQuestions = document.querySelectorAll("div[class*='question-']");
+
+// check time before going to next question
+// put questions into an array, can use multiple arrays, single arrays, array of objects
+// then, have a global cariable that tracks what question you're currently on, then you have a function that knows how to display the question that you're currently on, then whenever user answers a question, instead of hiding and moving onto next one, increment current question and recall that function
 
 startBtnEl.addEventListener("click", function (event) {
     console.log("Button Clicked");
@@ -26,6 +31,17 @@ function countdown() {
 
     if (timeLeft <=0) {
         clearInterval(timerCountDown);
+        // disable buttons, jump to high score page - how?
+        allQuestions.forEach(function(page) {
+            page.classList.add("hidden");
+            console.log("pages hidden");
+        });
+
+        console.log("Final Score = " + score);
+        document.querySelector(".high-score-page").classList.remove("hidden");
+        highScoreBox.classList.remove("hidden");
+        highScoreValue.textContent = score;
+
     }
 
 }, 1000);
@@ -54,16 +70,23 @@ questionOneAnswers.forEach(function(button) {
             questionOneIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
         // How do I make it so that once one selection is made, no other selections can be made i.e. if someone clicks the correct answer, if they were to click another button? Solved.
         document.querySelectorAll('.answer-1-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
+
+        if (timeLeft >= 10) {
         setTimeout(() => {
         questionOneNext.classList.add("hidden");
         questionTwoPage.classList.remove("hidden");
-        }, 1300);
+        }, 1300);}
+
+        else {
+            questionOneNext.classList.add("hidden");
+        }
     });
 });
 
@@ -91,15 +114,22 @@ questionTwoAnswers.forEach(function(button) {
             questionTwoIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
         document.querySelectorAll('.answer-2-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionTwoNext.classList.add("hidden");
-        questionThreePage.classList.remove("hidden");
-        }, 1300);
+
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionTwoNext.classList.add("hidden");
+            questionThreePage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionTwoNext.classList.add("hidden");
+            }
     });
 });
 
@@ -126,16 +156,23 @@ questionThreeAnswers.forEach(function(button) {
             questionThreeIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-3-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionThreeNext.classList.add("hidden");
-        questionFourPage.classList.remove("hidden");
-        }, 1300);
+       
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionThreeNext.classList.add("hidden");
+            questionFourPage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionThreeNext.classList.add("hidden");
+            }
     });
 });
 
@@ -162,16 +199,23 @@ questionFourAnswers.forEach(function(button) {
             questionFourIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-4-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionFourNext.classList.add("hidden");
-        questionFivePage.classList.remove("hidden");
-        }, 1300);
+        
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionFourNext.classList.add("hidden");
+            questionFivePage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionFourNext.classList.add("hidden");
+            }
     });
 });
 
@@ -200,16 +244,23 @@ questionFiveAnswers.forEach(function(button) {
             questionFiveIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-5-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionFiveNext.classList.add("hidden");
-        questionSixPage.classList.remove("hidden");
-        }, 1300);
+        
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionFiveNext.classList.add("hidden");
+            questionSixPage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionFiveNext.classList.add("hidden");
+            }
     });
 });
 
@@ -236,16 +287,23 @@ questionSixAnswers.forEach(function(button) {
             questionSixIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-6-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionSixNext.classList.add("hidden");
-        questionSevenPage.classList.remove("hidden");
-        }, 1300);
+        
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionSixNext.classList.add("hidden");
+            questionSevenPage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionSixNext.classList.add("hidden");
+            }
     });
 });
 
@@ -272,16 +330,23 @@ questionSevenAnswers.forEach(function(button) {
             questionSevenIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-7-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionSevenNext.classList.add("hidden");
-        questionEightPage.classList.remove("hidden");
-        }, 1300);
+        
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionSevenNext.classList.add("hidden");
+            questionEightPage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionSevenNext.classList.add("hidden");
+            }
     });
 });
 
@@ -308,16 +373,23 @@ questionEightAnswers.forEach(function(button) {
             questionEightIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-8-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionEightNext.classList.add("hidden");
-        questionNinePage.classList.remove("hidden");
-        }, 1300);
+        
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionEightNext.classList.add("hidden");
+            questionNinePage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionEightNext.classList.add("hidden");
+            }
     });
 });
 
@@ -344,22 +416,30 @@ questionNineAnswers.forEach(function(button) {
             questionNineIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-9-button').forEach(function(button) {
             console.log("Disabling button", button.id);
             button.disabled = true;
         });
-        setTimeout(() => {
-        questionNineNext.classList.add("hidden");
-        questionTenPage.classList.remove("hidden");
-        }, 1300);
+        
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionNineNext.classList.add("hidden");
+            questionTenPage.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionNineNext.classList.add("hidden");
+            }
     });
 });
 
 var questionTenPage = document.querySelector(".question-10-page");
 var questionTenAnswers = document.querySelectorAll(".answer-10-button");
 var highScorePage = document.querySelector(".high-score-page");
+var highScoreBox = document.getElementById("high-score-box");
 
 var correctAnswerFour = document.getElementById("choice-3-A");
 var questionTenCorrect = document.querySelector(".Question-Ten-Correct");
@@ -380,6 +460,7 @@ questionTenAnswers.forEach(function(button) {
             questionTenIncorrect.classList.remove("hidden");
             // make it so that answering incorrecly subtracts 10 seconds from time
             timeLeft = Math.max(timeLeft - 10, 0);
+            score = Math.max(score - 10, 0);
         }
 
         document.querySelectorAll('.answer-10-button').forEach(function(button) {
@@ -387,16 +468,50 @@ questionTenAnswers.forEach(function(button) {
             button.disabled = true;
         });
         clearInterval(timerCountDown);
+
+        score = score + (timeLeft*5);
+        console.log("Final Score = " + score)
+        highScoreValue.textContent = score;
+
+        if (timeLeft >= 10) {
+            setTimeout(() => {
+            questionTenNext.classList.add("hidden");
+            highScorePage.classList.remove("hidden");
+            highScoreBox.classList.remove("hidden");
+            }, 1300);}
+    
+            else {
+                questionTenNext.classList.add("hidden");
+            highScorePage.classList.remove("hidden");
+            highScoreBox.classList.remove("hidden");
+            }
+
         setTimeout(() => {
         questionTenNext.classList.add("hidden");
         highScorePage.classList.remove("hidden");
+        highScoreBox.classList.remove("hidden");
         }, 1300);
     });
 });
 
+var nameField = document.getElementById("nameField");
+var saveButton = document.getElementById("saveButton");
+var highScoreValue = document.getElementById("high-score");
+var highScoreList = document.querySelector(".high-score-list");
+var nameGoesHere = document.getElementById("name-goes-here");
+var scoreGoesHere = document.getElementById("score-goes-here");
 
+saveButton.addEventListener("click", function() {
+    var nameValue = nameField.value;
 
+    localStorage.setItem("userName", nameValue);
+    nameField.value = "";
+    highScoreList.classList.remove("hidden");
 
+    // set value of name and score to high-score-list
+    nameGoesHere.textContent = localStorage.getItem("userName")
+
+});
 
 
 //make Start Quiz page hidden
