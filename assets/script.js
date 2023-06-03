@@ -6,6 +6,70 @@ var score = 0;
 var timerCountDown;
 var allQuestions = document.querySelectorAll("div[class*='question-']");
 
+var quizQuestions = [
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+
+    {
+        question: "What does NaN stand for in JavaScript?",
+        answers: ["A: Not a Name", "B: Not a Number", "C: New Array Number", "D: None of the Above"],
+        correct_answer: "B: Not a Number",
+    },
+
+    {
+        question: "Which of the following is the correct syntax to redirect a URL using JavaScript?",
+        answers: ['A: window.location="http://www.newURL.com";', 'B: browser.location="http://www.newURL.com"', 'navigator.location="http://www.newURL.com";', 'D: document.location="http://www.newURL.com";'],
+        correct_answer: 'A: window.location="http://www.newURL.com";',
+    },
+
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+
+    {
+        question: "What is the output of the following JavaScript Code?",
+        answers: ["A: 11", "B: 2", "C: NaN", "D: An Error"],
+        correct_answer: "A: 11",
+    },
+]
+
+//quizQuestions[0].question;
+
 // check time before going to next question
 // put questions into an array, can use multiple arrays, single arrays, array of objects
 // then, have a global cariable that tracks what question you're currently on, then you have a function that knows how to display the question that you're currently on, then whenever user answers a question, instead of hiding and moving onto next one, increment current question and recall that function
@@ -40,7 +104,7 @@ function countdown() {
         console.log("Final Score = " + score);
         document.querySelector(".high-score-page").classList.remove("hidden");
         highScoreBox.classList.remove("hidden");
-        highScoreValue.textContent = score;
+        highScore.textContent = score;
 
     }
 
@@ -78,7 +142,7 @@ questionOneAnswers.forEach(function(button) {
             button.disabled = true;
         });
 
-        if (timeLeft >= 10) {
+        if (timeLeft >= 0) {
         setTimeout(() => {
         questionOneNext.classList.add("hidden");
         questionTwoPage.classList.remove("hidden");
@@ -471,7 +535,7 @@ questionTenAnswers.forEach(function(button) {
 
         score = score + (timeLeft*5);
         console.log("Final Score = " + score)
-        highScoreValue.textContent = score;
+        highScore.textContent = score;
 
         if (timeLeft >= 10) {
             setTimeout(() => {
@@ -496,20 +560,41 @@ questionTenAnswers.forEach(function(button) {
 
 var nameField = document.getElementById("nameField");
 var saveButton = document.getElementById("saveButton");
-var highScoreValue = document.getElementById("high-score");
+var highScore = document.getElementById("high-score");
 var highScoreList = document.querySelector(".high-score-list");
 var nameGoesHere = document.getElementById("name-goes-here");
 var scoreGoesHere = document.getElementById("score-goes-here");
 
 saveButton.addEventListener("click", function() {
-    var nameValue = nameField.value;
+    var userValues = {name: nameField.value, score: score}
 
-    localStorage.setItem("userName", nameValue);
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    highScores.push(userValues);
+
+    highScores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+
+    highScores = highScores.slice(0, 15);
+
+    localStorage.setItem("highScores", JSON.stringify(highScores));
     nameField.value = "";
     highScoreList.classList.remove("hidden");
+    
+
+    while (highScoreList.firstChild) {
+        highScoreList.removeChild(highScoreList.firstChild);
+    }
+
+    highScores.forEach(function(user) {
+        var listItem = document.createElement("li");
+        listItem.textContent = user.name + " - " + user.score;
+        highScoreList.appendChild(listItem);
+    });
 
     // set value of name and score to high-score-list
-    nameGoesHere.textContent = localStorage.getItem("userName")
+    //nameGoesHere.textContent = localStorage.getItem("userValues");
 
 });
 

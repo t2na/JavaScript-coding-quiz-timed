@@ -1,177 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
     <title>JavaScript Coding Quiz</title>
     <link rel="stylesheet" href="./assets/style.css">
+    <style>
+        .start-screen {
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+        }
+
+        .start-screen h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,.5);
+        }
+
+        .start-screen p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+        }
+
+        .start-screen .btn-success {
+            padding: .75rem 1.5rem;
+            font-size: 1.5rem;
+            transition: background-color .3s ease, transform .3s ease;
+        }
+
+        .start-screen .btn-success:hover {
+            background-color: #28a745;
+            transform: scale(1.1);
+        }
+
+        .start-screen .btn-success:focus {
+            box-shadow: 0 0 0 .25rem rgba(40,167,69,.5);
+        }
+    </style>
 </head>
+
 <body class="bg-dark">
     <div class="bg-dark container d-flex justify-content-center align-items-center vh-100">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-12">
-                <!-- Bootstrap preset color classes for backgrounds and text -->
-                <div class="starting-page bg-dark text-white p-4 rounded text-center">
-                    <button id="startbtn" class="btn btn-success">Start Quiz</button>
+                <div class="starting-page start-screen p-4 rounded text-center">
+                    <h1>JavaScript Coding Quiz</h1>
+                    <p>Test your JavaScript skills with this challenging quiz!</p>
+                    <button id="startBtn" class="btn btn-success">Start Quiz</button>
                 </div>
 
                 <div class="timer text-white position-static top-100 start-100 hidden">
-                    
+
                 </div>
-<!--Make it so that buttons align vertically instead of horizontal-->
-                <div class="question-1-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 1</h3>
-                    <p class="mt-4">What is the output of the following JavaScript Code?</p>
-                    <p>console.log(1 + "1");</p>
+                <!--Make it so that buttons align vertically instead of horizontal-->
+                <div id="game-screen" class="question-1-page hidden bg-light my-4 p-4 rounded">
+                    <h3 id="question-number"></h3>
+                    <p id="question" class="mt-4"></p>
+                    <p></p>
                     <!--Multiple Choice Answers-->
-                    <button id="choice-1-A" class="btn btn-primary btn-block my-1 answer-1-button">A: 11</button>
-                    <button id="choice-1-B" class="btn btn-primary btn-block my-1 answer-1-button">B: 2</button>
-                    <button id="choice-1-C" class="btn btn-primary btn-block my-1 answer-1-button">C: NaN</button>
-                    <button id="choice-1-D" class="btn btn-primary btn-block my-1 answer-1-button">D: An Error</button>
-                    <p class="Question-One-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-One-Incorrect hidden text-danger">Incorrect! 😫</p>
+                    <button id="choice-A" class="btn btn-primary btn-block my-1 answer-button"></button>
+                    <button id="choice-B" class="btn btn-primary btn-block my-1 answer-button"></button>
+                    <button id="choice-C" class="btn btn-primary btn-block my-1 answer-button"></button>
+                    <button id="choice-D" class="btn btn-primary btn-block my-1 answer-button"></button>
+                    <p id="feedback" class="Question-One-Correct"></p>
+
                 </div>
 
-                <div class="question-2-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 2</h3>
-                    <p class="mt-4">What does NaN stand for in JavaScript?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-2-A" class="btn btn-primary btn-block my-1 answer-2-button">A: Not a Name</button>
-                    <button id="choice-2-B" class="btn btn-primary btn-block my-1 answer-2-button">B: Not a Number</button>
-                    <button id="choice-2-C" class="btn btn-primary btn-block my-1 answer-2-button">C: New Array Number</button>
-                    <button id="choice-2-D" class="btn btn-primary btn-block my-1 answer-2-button">D: None of the Above</button>
-                    <p class="Question-Two-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Two-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-3-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 3</h3>
-                    <p class="mt-4">Which of the following is the correct syntax to redirect a URL using JavaScript?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-3-A" class="btn btn-primary btn-block my-1 answer-3-button">A: window.location="http://www.newURL.com";</button>
-                    <button id="choice-3-B" class="btn btn-primary btn-block my-1 answer-3-button">B: browser.location="http://www.newURL.com";</button>
-                    <button id="choice-3-C" class="btn btn-primary btn-block my-1 answer-3-button">C: navigator.location="http://www.newURL.com";</button>
-                    <button id="choice-3-D" class="btn btn-primary btn-block my-1 answer-3-button">D: document.location="http://www.newURL.com";</button>
-                    <p class="Question-Three-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Three-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-4-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 4</h3>
-                    <p class="mt-4">Which method removes the last element from an array and returns that element in JavaScript?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-4-A" class="btn btn-primary btn-block my-1 answer-4-button">A: pop()</button>
-                    <button id="choice-4-B" class="btn btn-primary btn-block my-1 answer-4-button">B: push()</button>
-                    <button id="choice-4-C" class="btn btn-primary btn-block my-1 answer-4-button">C: shift()</button>
-                    <button id="choice-4-D" class="btn btn-primary btn-block my-1 answer-4-button">D: unshift()</button>
-                    <p class="Question-Four-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Four-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-5-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 5</h3>
-                    <p class="mt-4">How do you declare a JavaScript variable?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-5-A" class="btn btn-primary btn-block my-1 answer-5-button">A: variable carName;</button>
-                    <button id="choice-5-B" class="btn btn-primary btn-block my-1 answer-5-button">B: var carName;</button>
-                    <button id="choice-5-C" class="btn btn-primary btn-block my-1 answer-5-button">C: v carName;</button>
-                    <button id="choice-5-D" class="btn btn-primary btn-block my-1 answer-5-button">D: val carName;</button>
-                    <p class="Question-Five-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Five-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-6-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 6</h3>
-                    <p class="mt-4">What is the correct JavaScript syntax for opening a new window called "w2" ?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-6-A" class="btn btn-primary btn-block my-1 answer-6-button">A: w2 = window.new("http://www.openai.com");</button>
-                    <button id="choice-6-B" class="btn btn-primary btn-block my-1 answer-6-button">B: w2 = window.open("http://www.openai.com");</button>
-                    <button id="choice-6-C" class="btn btn-primary btn-block my-1 answer-6-button">C: w2 = window.create("http://www.openai.com");</button>
-                    <button id="choice-6-D" class="btn btn-primary btn-block my-1 answer-6-button">D: w2 = window.start("http://www.openai.com");</button>
-                    <p class="Question-Six-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Six-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-7-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 7</h3>
-                    <p class="mt-4">How does a WHILE loop start in JavaScript?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-7-A" class="btn btn-primary btn-block my-1 answer-7-button">A: while (i <= 10; i++)</button>
-                    <button id="choice-7-B" class="btn btn-primary btn-block my-1 answer-7-button">B: while i = 1 to 10</button>
-                    <button id="choice-7-C" class="btn btn-primary btn-block my-1 answer-7-button">C: while (i <= 10)</button>
-                    <button id="choice-7-D" class="btn btn-primary btn-block my-1 answer-7-button">D: while i <= 10</button>
-                    <p class="Question-Seven-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Seven-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-8-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 8</h3>
-                    <p class="mt-4">Which object provides methods to work with dates and times in JavaScript?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-8-A" class="btn btn-primary btn-block my-1 answer-8-button">A: Time</button>
-                    <button id="choice-8-B" class="btn btn-primary btn-block my-1 answer-8-button">B: Date</button>
-                    <button id="choice-8-C" class="btn btn-primary btn-block my-1 answer-8-button">C: DateTime</button>
-                    <button id="choice-8-D" class="btn btn-primary btn-block my-1 answer-8-button">D: None of the above</button>
-                    <p class="Question-Eight-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Eight-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-9-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 9</h3>
-                    <p class="mt-4">What will the following code return: Boolean(10 > 9);?</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-9-A" class="btn btn-primary btn-block my-1 answer-9-button">A: true</button>
-                    <button id="choice-9-B" class="btn btn-primary btn-block my-1 answer-9-button">B: false</button>
-                    <button id="choice-9-C" class="btn btn-primary btn-block my-1 answer-9-button">C: NaN</button>
-                    <button id="choice-9-D" class="btn btn-primary btn-block my-1 answer-9-button">D: undefined</button>
-                    <p class="Question-Nine-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Nine-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-
-                <div class="question-10-page hidden bg-light my-4 p-4 rounded">
-                    <h3>Question 10</h3>
-                    <p class="mt-4">Which operator is used to assign a value to a variable in JavaScript??</p>
-                    <!--Multiple Choice Answers-->
-                    <button id="choice-10-A" class="btn btn-primary btn-block my-1 answer-10-button">A: *</button>
-                    <button id="choice-10-B" class="btn btn-primary btn-block my-1 answer-10-button">B: =</button>
-                    <button id="choice-10-C" class="btn btn-primary btn-block my-1 answer-10-button">C: ==</button>
-                    <button id="choice-10-D" class="btn btn-primary btn-block my-1 answer-10-button">D: ===</button>
-                    <p class="Question-Ten-Correct hidden text-success">Correct! 😁</p>
-                    <p class="Question-Ten-Incorrect hidden text-danger">Incorrect! 😫</p>
-                </div>
-            <div class="high-score-container">
-                <div class="high-score-page hidden bg-light my-4 p-4 rounded text-center">
-                   <h3>Quiz over! Enter your name to save your score!</h3>
-                   <h4>Score: <span id="high-score"></span></h4>
-                </div>
-                <break>
-                <!--Need text field where you can enter a name, next to score field that saves your high score-->
-                <div id="high-score-box" class="hidden bg-light my-4 p-4 rounded">
-                    <div id="enter-your-name" class="row">
-                        <div class="col-4">
-                            <button id="saveButton" class="btn btn-success">Save Score</button>
-                        </div>
-                        <div class="col-4">
-                            <input type="text" id="nameField" placeholder="Your name here" />
-                        </div>
-                    </div>
-                </div>
-                <break>
-                <div class="high-score-list-contiainer hidden bg-light my-4 p-4 rounded text-center">
-                    <h4>High Scores</h4>
-                    <div class="high-score-list hidden row">
-                        <p id="name-goes-here"></p>
-                        <p id="score-goes-here"></p>
-                    </div>
-                </div>
                 
-            </div>
+                <div class="high-score-container hidden">
+                    <div class="high-score-page hidden bg-light my-4 p-4 rounded text-center">
+                        <h3>Quiz over! Enter your name to save your score!</h3>
+                        <h4>Score: <span id="high-score"></span></h4>
+                    </div>
+                    <break>
+                        <!--Need text field where you can enter a name, next to score field that saves your high score-->
+                        <div id="high-score-box" class="hidden bg-light my-4 p-4 rounded">
+                            <div id="enter-your-name" class="row">
+                                <div class="col-4">
+                                    <button id="saveButton" class="btn btn-success">Save Score</button>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" id="nameField" placeholder="Your name here" />
+                                </div>
+                            </div>
+                        </div>
+                        <break>
+                            <div class="high-score-list-container hidden bg-light my-4 p-4 rounded text-center">
+                                <h4>High Scores</h4>
+                                <ol id="highScoreList" class="high-score-list hidden"></ol>
+                            </div>
+
+                </div>
             </div>
         </div>
     </div>
 </body>
 
-<script src="./assets/script.js"></script>
+<!-- <script src="./assets/script.js"></script> -->
+<script src="./assets/script2.js"></script>
+
 </html>
