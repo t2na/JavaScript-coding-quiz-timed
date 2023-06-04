@@ -156,10 +156,11 @@ function displayQuestion() {
 
     questionNumber.textContent = "Question " + (questionIndex + 1);
     question.textContent = currentQuestion.question;
-    choiceA.textContent = currentQuestion.answers[0];
-    choiceB.textContent = currentQuestion.answers[1];
-    choiceC.textContent = currentQuestion.answers[2];
-    choiceD.textContent = currentQuestion.answers[3];
+    
+    let choices = [choiceA, choiceB, choiceC, choiceD];
+    choices.forEach((choice, index) => {
+        choice.textContent = currentQuestion.answers[index];
+    });
 
     enableAllChoices();
 }
@@ -169,7 +170,7 @@ function countdown() {
     timerCountDown = setInterval(function () {
         if (timeLeft > 0) {
             timeLeft--;
-            timer.textContent = timeLeft;
+            timer.textContent = "Time left: " + timeLeft;
             if (timeLeft <= 10) {
                 // set color to red when time hits 10 seconds
                 timer.setAttribute("style", "color:red !important;");
@@ -215,38 +216,20 @@ saveButton.addEventListener("click", function () {
 
 startBtn.addEventListener("click", startQuiz);
 
-choiceA.addEventListener("click", function(event){
+function handleClick(event){
     checkAnswer(event);
     disableAllChoices();
-  });
-  
-  choiceB.addEventListener("click", function(event){
-    checkAnswer(event);
-    disableAllChoices();
-  });
-  
-  choiceC.addEventListener("click", function(event){
-    checkAnswer(event);
-    disableAllChoices();
-  });
-  
-  choiceD.addEventListener("click", function(event){
-    checkAnswer(event);
-    disableAllChoices();
-  });
-  
-  function disableAllChoices() {
-    choiceA.disabled = true;
-    choiceB.disabled = true;
-    choiceC.disabled = true;
-    choiceD.disabled = true;
-  }
+}
 
-  function enableAllChoices() {
-    choiceA.disabled = false;
-    choiceB.disabled = false;
-    choiceC.disabled = false;
-    choiceD.disabled = false;
-  }
+[choiceA, choiceB, choiceC, choiceD].forEach(choice => choice.addEventListener("click", handleClick));
+
+function disableAllChoices() {
+    [choiceA, choiceB, choiceC, choiceD].forEach(choice => choice.disabled = true);
+}
+
+function enableAllChoices() {
+    [choiceA, choiceB, choiceC, choiceD].forEach(choice => choice.disabled = false);
+}
+
 
   
