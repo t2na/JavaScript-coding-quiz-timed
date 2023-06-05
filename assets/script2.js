@@ -195,7 +195,7 @@ saveButton.addEventListener("click", function () {
         return b.score - a.score;
     });
 
-    highScores - highScores.slice(0,15);
+    highScores = highScores.slice(0,15);
 
     localStorage.setItem("highScores", JSON.stringify(highScores));
     nameField.value = "";
